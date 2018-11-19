@@ -1,11 +1,11 @@
 author:            Kit, Jacob, Madeline
-summary:           Colorwave topic survey project
+summary:           Colorwaves topic survey project
 id:                1005
 environments:      android
 
 #Topic Survey: Voice Recognition and Colorwaves
 
-###### Team 1005: Jacob, Madeline & Kit
+###### Team 1005: Jacob, Madeline, and Kit
 
 
 ## Overview of Tutorial
@@ -154,7 +154,7 @@ public class GoogleCredentialsInterceptor implements ClientInterceptor {
 }
 ```
 
-4.Make a class called **VoiceRecorder**
+4. Make a class called **VoiceRecorder**
 
 ```java
 /*
@@ -387,7 +387,7 @@ public class VoiceRecorder {
 }
 ```
 
-5.Make a class called **SpeechAPI**. The code can be found below.
+5. Make a class called **SpeechAPI**. The code can be found below.
 
 ```java
 import android.content.Context;
@@ -643,7 +643,7 @@ public class SpeechAPI {
 }
 ```
 
-6.Update the Project Gradle
+6. Update the Project Gradle
 ```javascript
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
@@ -680,7 +680,7 @@ task clean(type: Delete) {
 ```
 
 
-7.Udate the App Gradle
+7. Update the App Gradle
 
 ```javascript
 apply plugin: 'com.android.application'
@@ -775,12 +775,13 @@ dependencies {
 
 ```
 
-8.Add audio and internet permissions to the manifest
+8. Add audio and internet permissions to the manifest
 ```xml
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
 ``` 
-9.Add colors.xml
+
+9. Add colors.xml
 [Download colors.xml Here](https://drive.google.com/uc?export=download&id=1ci5otM9UZwphZ-4EZfgiO4p9Wmmo5x6G)
     
 ## Google Speech API
@@ -789,40 +790,43 @@ We're going to need to set up our google cloud and retrieve an API key.
 
 Go to the Google Cloud Platform [console](https://console.cloud.google.com).
 
-1.Create a new Project
+1. Create a new Project
 ![Create](cproj.png)
 
-2.Enable API
+2. Enable API
 ![Enable](cenable.png)
 
-3.Add Cloud Speech API
+3. Add Cloud Speech API
 ![Add API](cspeech.png)
 
-4.Create credentials
+4. Create credentials
 ![Credentials](ccred.png)
 
-5.Assign role
+5. Assign role
 ![Role](crole.png)
 
-One you have done this it will generate and download a JSON file. Rename this file to credentials.json and then create a new directory in your project res file called raw and add the json file there.
+Once you have done this it will generate and download a JSON file. Rename this file to credentials.json and then create 
+a new directory in your project res file called raw and add the json file there.
 
 ![Raw](rawfile.png)
-
 
 
 ## Adding Functionality
 
 Now it's time to start adding the functionality to change the background color!
 
-In the `content_main.xml`, let's give the constraint layout a name, so we can reference it using `layout = (ConstraintLayout) findViewById(R.id.layout);`. Also feel free to get rid of the "Hello World" text.
+In the `content_main.xml`, let's give the constraint layout a name, so we can reference it using `layout = 
+(ConstraintLayout) findViewById(R.id.layout);`. Create this reference in `MainActivity.java`. Also feel free to get rid 
+of the "Hello World" text.
 
-Now let's go into the `activity_main.xml` and change the icon of the Floating Action Button to a mic. Find srcCompat in the properties view and change it to `ic_btn_speak_now`. Let's change the backgroundTint of the FAB to red, and the tint to WHITE.
+Now let's go into the `activity_main.xml` and change the icon of the Floating Action Button to a mic. Find srcCompat in 
+the properties view and change it to `ic_btn_speak_now`. Let's change the backgroundTint of the FAB to red, and the tint to WHITE.
 
 
 ![Layout](sc.png)
 
 
-Now even though we have uses-permission in our manifest, we should request audio on runtime. Let's add this to our `onCreate()` method.
+Now even though we have user-permission in our manifest, we should request audio on runtime. Let's add this to our `onCreate()` method.
         
 ```Java
 if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
@@ -834,7 +838,7 @@ Putting our request code as a constant at the top of our class.
 `private static final int RECORD_REQUEST_CODE = 101;`
 
 
-Now we're going to set up our voice recorder.
+Next we're going to set up our VoiceRecorder: 
 
 ```Java
 private final VoiceRecorder.Callback mVoiceCallback = new VoiceRecorder.Callback() {
@@ -863,7 +867,7 @@ private final VoiceRecorder.Callback mVoiceCallback = new VoiceRecorder.Callback
     };
 ```
 
-Next, let's set up our SpeechAPI.
+Next, let's set up our SpeechAPI:
 ```Java
     private final SpeechAPI.Listener mSpeechServiceListener =
             new SpeechAPI.Listener() {
@@ -876,6 +880,7 @@ Next, let's set up our SpeechAPI.
                 }
             };
 ```
+
 Be sure to add fields for our SpeechAPI and VoiceRecorder objects:
 ```Java
 SpeechAPI speechAPI = new SpeechAPI(this);
@@ -885,7 +890,7 @@ and
 VoiceRecorder mVoiceRecorder = new VoiceRecorder(mVoiceCallback);
 ```
 
-We need to process the text. So let's create that processText function.
+We need to process the text. So let's create that processText function that is called when you set up `speechAPI`.
 Since each color in the colors.xml is all-caps and only letters, then we capitalize and remove all whitespace from the string. 
 ```java
     private void processText(final String text) {
