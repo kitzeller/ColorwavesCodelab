@@ -1,3 +1,8 @@
+author:            Kit, Jacob, Madeline
+summary:           Colorwave topic survey project
+id:                1005
+environments:      android
+
 #Topic Survey: Voice Recognition and Colorwaves
 
 ###### Team 1005: Jacob, Madeline & Kit
@@ -639,7 +644,7 @@ public class SpeechAPI {
 ```
 
 6.Update the Project Gradle
-```
+```javascript
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
@@ -677,7 +682,7 @@ task clean(type: Delete) {
 
 7.Udate the App Gradle
 
-```
+```javascript
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.protobuf'
 
@@ -771,426 +776,12 @@ dependencies {
 ```
 
 8.Add audio and internet permissions to the manifest
-
+```xml
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
-    
+``` 
 9.Add colors.xml
-
-```
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
-    <color name="ABSOLUTEZERO">#0048BA</color>
-    <color name="ACID">#B0BF1A</color>
-    <color name="AERO">#7cb9e8</color>
-    <color name="AIRSUPERIORITYBLUE">#72A0C1</color>
-    <color name="ALABASTER">#EDEAE0</color>
-    <color name="ALICEBLUE">#F0F8FF</color>
-    <color name="ALLOYORANGE">#C46210</color>
-    <color name="ALMOND">#EFDECD</color>
-    <color name="AMBER">#FFBF00</color>
-    <color name="AMETHYST">#9966CC</color>
-    <color name="ANTIFLASHWHITE">#F2F3F4</color>
-    <color name="ANTIQUEBRASS">#CD9575</color>
-    <color name="ANTIQUEBRONZE">#665D1E</color>
-    <color name="ANTIQUEFUCHSIA">#915C83</color>
-    <color name="ANTIQUERUBY">#841B2D</color>
-    <color name="ANTIQUEWHITE">#FAEBD7</color>
-    <color name="AO">#008000</color>
-    <color name="APPLEGREEN">#8DB600</color>
-    <color name="APRICOT">#FBCEB1</color>
-    <color name="AQUA">#00FFFF</color>
-    <color name="AQUAMARINE">#7FFFD4</color>
-    <color name="ARCTICLIME">#D0FF14</color>
-    <color name="ARMYGREEN">#4B5320</color>
-    <color name="ARTICHOKE">#8F9779</color>
-    <color name="ARYLIDEYELLOW">#E9D66B</color>
-    <color name="ASHGRAY">#B2BEB5</color>
-    <color name="ASPARAGUS">#87A96B</color>
-    <color name="ATOMICTANGERINE">#FF9966</color>
-    <color name="AUBURN">#A52A2A</color>
-    <color name="AUREOLIN">#FDEE00</color>
-    <color name="AVOCADO">#568203</color>
-    <color name="AZURE">#007FFF</color>
-    <color name="BABYBLUE">#89CFF0</color>
-    <color name="BABYBLUEEYES">#A1CAF1</color>
-    <color name="BABYPINK">#F4C2C2</color>
-    <color name="BAKERMILLERPINK">#FF91AF</color>
-    <color name="BANANAMANIA">#FAE7B5</color>
-    <color name="BARBIEPINK">#E0218A</color>
-    <color name="BARNRED">#7C0A02</color>
-    <color name="BATTLESHIPGRAY">#848482</color>
-    <color name="BDAZZLEDBLUE">#2E5894</color>
-    <color name="BEAUBLUE">#BCD4E6</color>
-    <color name="BEAVER">#9F8170</color>
-    <color name="BEIGE">#F5F5DC</color>
-    <color name="BIGDIPOsRUBY">#9C2542</color>
-    <color name="BISQUE">#FFE4C4</color>
-    <color name="BISTRE">#3D2B1F</color>
-    <color name="BISTREBROWN">#967117</color>
-    <color name="BITTERLEMON">#CAE00D</color>
-    <color name="BITTERLIME">#BFFF00</color>
-    <color name="BITTERSWEET">#FE6F5E</color>
-    <color name="BITTERSWEETSHIMMER">#BF4F51</color>
-    <color name="BLACK">#000000</color>
-    <color name="BLACKBEAN">#3D0C02</color>
-    <color name="BLACKCHOCOLATE">#1B1811</color>
-    <color name="BLACKCOFFEE">#3B2F2F</color>
-    <color name="BLACKCORAL">#54626F</color>
-    <color name="BLACKOLIVE">#3B3C36</color>
-    <color name="BLACKSHADOWS">#BFAFB2</color>
-    <color name="BLANCHEDALMOND">#FFEBCD</color>
-    <color name="BLASTOFFBRONZE">#A57164</color>
-    <color name="BLEUDEFRANCE">#318CE7</color>
-    <color name="BLIZZARDBLUE">#ACE5EE</color>
-    <color name="BLOND">#FAF0BE</color>
-    <color name="BLOODRED">#660000</color>
-    <color name="BLUE">#0000FF</color>
-    <color name="BLUEBELL">#A2A2D0</color>
-    <color name="BLUEGRAY">#6699CC</color>
-    <color name="BLUEGREEN">#064E40</color>
-    <color name="BLUEJEANS">#5DADEC</color>
-    <color name="BLUESAPPHIRE">#126180</color>
-    <color name="BLUETIFUL">#3C69E7</color>
-    <color name="BLUEVIOLET">#4D1A7F</color>
-    <color name="BLUEYONDER">#5072A7</color>
-    <color name="BLUSH">#DE5D83</color>
-    <color name="BOLE">#79443B</color>
-    <color name="BONDIBLUE">#0095B6</color>
-    <color name="BONE">#E3DAC9</color>
-    <color name="BOTTLEGREEN">#006A4E</color>
-    <color name="BRANDY">#87413F</color>
-    <color name="BRICKRED">#CB4154</color>
-    <color name="BRIGHTGREEN">#66FF00</color>
-    <color name="BRIGHTLILAC">#D891EF</color>
-    <color name="BRIGHTMAROON">#C32148</color>
-    <color name="BRIGHTNAVYBLUE">#1974D2</color>
-    <color name="BRIGHTPINK">#FF007F</color>
-    <color name="BRIGHTYELLOW">#FFAA1D</color>
-    <color name="BRILLIANTROSE">#FF55A3</color>
-    <color name="BRINKPINK">#FB607F</color>
-    <color name="BRITISHRACINGGREEN">#004225</color>
-    <color name="BRONZE">#CD7F32</color>
-    <color name="BROWN">#88540B</color>
-    <color name="BROWNSUGAR">#AF6E4D</color>
-    <color name="BRUNSWICKGREEN">#1B4D3E</color>
-    <color name="BUBBLES">#E7FEFF</color>
-    <color name="BUDGREEN">#7BB661</color>
-    <color name="BUFF">#F0DC82</color>
-    <color name="BURGUNDY">#800020</color>
-    <color name="BURLYWOOD">#DEB887</color>
-    <color name="BURNISHEDBROWN">#A17A74</color>
-    <color name="BURNTORANGE">#CC5500</color>
-    <color name="BURNTSIENNA">#E97451</color>
-    <color name="BURNTUMBER">#8A3324</color>
-    <color name="BYZANTINE">#BD33A4</color>
-    <color name="BYZANTIUM">#702963</color>
-    <color name="CADET">#536872</color>
-    <color name="CADETBLUE">#5F9EA0</color>
-    <color name="CADETGRAY">#91A3B0</color>
-    <color name="CADMIUMGREEN">#006B3C</color>
-    <color name="CADMIUMORANGE">#ED872D</color>
-    <color name="CADMIUMRED">#E30022</color>
-    <color name="CADMIUMYELLOW">#FFF600</color>
-    <color name="CAFÉAULAIT">#A67B5B</color>
-    <color name="CAFÉNOIR">#4B3621</color>
-    <color name="CALPOLYPOMONAGREEN">#1E4D2B</color>
-    <color name="CAMBRIDGEBLUE">#A3C1AD</color>
-    <color name="CAMEL">#C19A6B</color>
-    <color name="CAMEOPINK">#EFBBCC</color>
-    <color name="CANARY">#FFFF99</color>
-    <color name="CANARYYELLOW">#FFEF00</color>
-    <color name="CANDYAPPLERED">#FF0800</color>
-    <color name="CANDYPINK">#E4717A</color>
-    <color name="CAPRI">#00BFFF</color>
-    <color name="CAPUTMORTUUM">#592720</color>
-    <color name="CARDINAL">#C41E3A</color>
-    <color name="CARIBBEANGREEN">#00CC99</color>
-    <color name="CARMINE">#960018</color>
-    <color name="CARNATIONPINK">#FFA6C9</color>
-    <color name="CARNELIAN">#B31B1B</color>
-    <color name="CAROLINABLUE">#56A0D3</color>
-    <color name="CARROTORANGE">#ED9121</color>
-    <color name="CASTLETONGREEN">#00563F</color>
-    <color name="CATAWBA">#703642</color>
-    <color name="CEDARCHEST">#C95A49</color>
-    <color name="CELADON">#ACE1AF</color>
-    <color name="CELADONBLUE">#007BA7</color>
-    <color name="CELADONGREEN">#2F847C</color>
-    <color name="CELESTE">#B2FFFF</color>
-    <color name="CELTICBLUE">#246BCE</color>
-    <color name="CERISE">#DE3163</color>
-    <color name="CERULEAN">#007BA7</color>
-    <color name="CERULEANBLUE">#2A52BE</color>
-    <color name="CERULEANFROST">#6D9BC3</color>
-    <color name="CGBLUE">#007AA5</color>
-    <color name="CGRED">#E03C31</color>
-    <color name="CHAMPAGNE">#F7E7CE</color>
-    <color name="CHAMPAGNEPINK">#F1DDCF</color>
-    <color name="CHARCOAL">#36454F</color>
-    <color name="CHARLESTONGREEN">#232B2B</color>
-    <color name="CHARMPINK">#E68FAC</color>
-    <color name="CHARTREUSE">#7FFF00</color>
-    <color name="CHERRYBLOSSOMPINK">#FFB7C5</color>
-    <color name="CHESTNUT">#954535</color>
-    <color name="CHINAPINK">#DE6FA1</color>
-    <color name="CHINAROSE">#A8516E</color>
-    <color name="CHINESERED">#AA381E</color>
-    <color name="CHINESEVIOLET">#856088</color>
-    <color name="CHINESEYELLOW">#FFB200</color>
-    <color name="CHOCOLATE">#7B3F00</color>
-    <color name="CHROMEYELLOW">#FFA700</color>
-    <color name="CINEREOUS">#98817B</color>
-    <color name="CINNABAR">#E34234</color>
-    <color name="CINNAMONSATIN">#CD607E</color>
-    <color name="CITRINE">#E4D00A</color>
-    <color name="CITRON">#9FA91F</color>
-    <color name="CLARET">#7F1734</color>
-    <color name="COBALTBLUE">#0047AB</color>
-    <color name="COCOABROWN">#D2691E</color>
-    <color name="COFFEE">#6F4E37</color>
-    <color name="COLUMBIABLUE">#B9D9EB</color>
-    <color name="CONGOPINK">#F88379</color>
-    <color name="COOLGRAY">#8C92AC</color>
-    <color name="COPPER">#B87333</color>
-    <color name="COPPERPENNY">#AD6F69</color>
-    <color name="COPPERRED">#CB6D51</color>
-    <color name="COPPERROSE">#996666</color>
-    <color name="COQUELICOT">#FF3800</color>
-    <color name="CORAL">#FF7F50</color>
-    <color name="CORALPINK">#F88379</color>
-    <color name="CORDOVAN">#893F45</color>
-    <color name="CORN">#FBEC5D</color>
-    <color name="CORNFLOWERBLUE">#6495ED</color>
-    <color name="CORNSILK">#FFF8DC</color>
-    <color name="COSMICCOBALT">#2E2D88</color>
-    <color name="COSMICLATTE">#FFF8E7</color>
-    <color name="COSMOSPINK">#FEBCFF</color>
-    <color name="COTTONCANDY">#FFBCD9</color>
-    <color name="COYOTEBROWN">#81613C</color>
-    <color name="CREAM">#FFFDD0</color>
-    <color name="CRIMSON">#DC143C</color>
-    <color name="CULTURED">#F5F5F5</color>
-    <color name="CYAN">#00B7EB</color>
-    <color name="CYBERGRAPE">#58427C</color>
-    <color name="CYBERYELLOW">#FFD300</color>
-    <color name="CYCLAMEN">#F56FA1</color>
-    <color name="DARKBLUE">#00008B</color>
-    <color name="DARKBLUEGRAY">#666699</color>
-    <color name="DARKBROWN">#654321</color>
-    <color name="DARKBYZANTIUM">#5D3954</color>
-    <color name="DARKCORNFLOWERBLUE">#26428B</color>
-    <color name="DARKCYAN">#008B8B</color>
-    <color name="DARKELECTRICBLUE">#536878</color>
-    <color name="DARKGOLDENROD">#B8860B</color>
-    <color name="DARKGRAY">#A9A9A9</color>
-    <color name="DARKGREEN">#006400</color>
-    <color name="DARKJUNGLEGREEN">#1A2421</color>
-    <color name="DARKKHAKI">#BDB76B</color>
-    <color name="DARKLAVA">#483C32</color>
-    <color name="DARKLIVER">#534B4F</color>
-    <color name="DARKMAGENTA">#8B008B</color>
-    <color name="DARKMEDIUMGRAY">#A9A9A9</color>
-    <color name="DARKMOSSGREEN">#4A5D23</color>
-    <color name="DARKOLIVEGREEN">#556B2F</color>
-    <color name="DARKORANGE">#FF8C00</color>
-    <color name="DARKORCHID">#9932CC</color>
-    <color name="DARKPASTELGREEN">#03C03C</color>
-    <color name="DARKPURPLE">#301934</color>
-    <color name="DARKRED">#8B0000</color>
-    <color name="DARKSALMON">#E9967A</color>
-    <color name="DARKSEAGREEN">#8FBC8F</color>
-    <color name="DARKSIENNA">#3C1414</color>
-    <color name="DARKSKYBLUE">#8CBED6</color>
-    <color name="DARKSLATEBLUE">#483D8B</color>
-    <color name="DARKSLATEGRAY">#2F4F4F</color>
-    <color name="DARKSPRINGGREEN">#177245</color>
-    <color name="DARKTURQUOISE">#00CED1</color>
-    <color name="DARKVIOLET">#9400D3</color>
-    <color name="DARTMOUTHGREEN">#00703C</color>
-    <color name="DAVYSGRAY">#555555</color>
-    <color name="DEEPCERISE">#DA3287</color>
-    <color name="DEEPCHAMPAGNE">#FAD6A5</color>
-    <color name="DEEPCHESTNUT">#B94E48</color>
-    <color name="DEEPFUCHSIA">#C154C1</color>
-    <color name="DEEPJUNGLEGREEN">#004B49</color>
-    <color name="DEEPPINK">#FF1493</color>
-    <color name="DEEPSAFFRON">#FF9933</color>
-    <color name="DEEPSKYBLUE">#00BFFF</color>
-    <color name="DEEPSPACESPARKLE">#4A646C</color>
-    <color name="DEEPTAUPE">#7E5E60</color>
-    <color name="DENIM">#1560BD</color>
-    <color name="DENIMBLUE">#2243B6</color>
-    <color name="DESERT">#C19A6B</color>
-    <color name="DESERTSAND">#EDC9AF</color>
-    <color name="DIMGRAY">#696969</color>
-    <color name="DODGERBLUE">#1E90FF</color>
-    <color name="DOGWOODROSE">#D71868</color>
-    <color name="DRAB">#967117</color>
-    <color name="DUKEBLUE">#00009C</color>
-    <color name="DUTCHWHITE">#EFDFBB</color>
-    <color name="EARTHYELLOW">#E1A95F</color>
-    <color name="EBONY">#555D50</color>
-    <color name="ECRU">#C2B280</color>
-    <color name="EERIEBLACK">#1B1B1B</color>
-    <color name="EGGPLANT">#614051</color>
-    <color name="EGGSHELL">#F0EAD6</color>
-    <color name="EGYPTIANBLUE">#1034A6</color>
-    <color name="ELECTRICBLUE">#7DF9FF</color>
-    <color name="ELECTRICGREEN">#00FF00</color>
-    <color name="ELECTRICINDIGO">#6F00FF</color>
-    <color name="ELECTRICLIME">#CCFF00</color>
-    <color name="ELECTRICPURPLE">#BF00FF</color>
-    <color name="ELECTRICVIOLET">#8F00FF</color>
-    <color name="EMERALD">#50C878</color>
-    <color name="EMINENCE">#6C3082</color>
-    <color name="ENGLISHGREEN">#1B4D3E</color>
-    <color name="ENGLISHLAVENDER">#B48395</color>
-    <color name="ENGLISHRED">#AB4B52</color>
-    <color name="ENGLISHVERMILLION">#CC474B</color>
-    <color name="ENGLISHVIOLET">#563C5C</color>
-    <color name="ERIN">#00FF40</color>
-    <color name="ETONBLUE">#96C8A2</color>
-    <color name="FALLOW">#C19A6B</color>
-    <color name="FALURED">#801818</color>
-    <color name="FANDANGO">#B53389</color>
-    <color name="FANDANGOPINK">#DE5285</color>
-    <color name="FASHIONFUCHSIA">#F400A1</color>
-    <color name="FAWN">#E5AA70</color>
-    <color name="FELDGRAU">#4D5D53</color>
-    <color name="FERNGREEN">#4F7942</color>
-    <color name="FIELDDRAB">#6C541E</color>
-    <color name="FIERYROSE">#FF5470</color>
-    <color name="FIREBRICK">#B22222</color>
-    <color name="FIREENGINERED">#CE2029</color>
-    <color name="FIREOPAL">#E95C4B</color>
-    <color name="FLAME">#E25822</color>
-    <color name="FLAVESCENT">#F7E98E</color>
-    <color name="FLAX">#EEDC82</color>
-    <color name="FLESH">#FFE9D1</color>
-    <color name="FLIRT">#A2006D</color>
-    <color name="FLORALWHITE">#FFFAF0</color>
-    <color name="FLUORESCENTBLUE">#15F4EE</color>
-    <color name="FORESTGREEN">#014421</color>
-    <color name="FRENCHBEIGE">#A67B5B</color>
-    <color name="FRENCHBISTRE">#856D4D</color>
-    <color name="FRENCHBLUE">#0072BB</color>
-    <color name="FRENCHFUCHSIA">#FD3F92</color>
-    <color name="FRENCHLILAC">#86608E</color>
-    <color name="FRENCHLIME">#9EFD38</color>
-    <color name="FRENCHMAUVE">#D473D4</color>
-    <color name="FRENCHPINK">#FD6C9E</color>
-    <color name="FRENCHRASPBERRY">#C72C48</color>
-    <color name="FRENCHROSE">#F64A8A</color>
-    <color name="FRENCHSKYBLUE">#77B5FE</color>
-    <color name="FRENCHVIOLET">#8806CE</color>
-    <color name="FROSTBITE">#E936A7</color>
-    <color name="FUCHSIA">#C154C1</color>
-    <color name="FUCHSIAPURPLE">#CC397B</color>
-    <color name="FUCHSIAROSE">#C74375</color>
-    <color name="FULVOUS">#E48400</color>
-    <color name="FUZZYWUZZY">#CC6666</color>
-    <color name="GAINSBORO">#DCDCDC</color>
-    <color name="GHOSTWHITE">#F8F8FF</color>
-    <color name="GOLD">#FFD700</color>
-    <color name="GOLDENROD">#DAA520</color>
-    <color name="GRAY">#808080</color>
-    <color name="GREEN">#008000</color>
-    <color name="GREENYELLOW">#ADFF2F</color>
-    <color name="HONEYDEW">#F0FFF0</color>
-    <color name="HOTPINK">#FF69B4</color>
-    <color name="INDIANRED">#CD5C5C</color>
-    <color name="INDIGO">#4B0082</color>
-    <color name="IVORY">#FFFFF0</color>
-    <color name="KHAKI">#F0E68C</color>
-    <color name="LAVENDER">#E6E6FA</color>
-    <color name="LAVENDERBLUSH">#FFF0F5</color>
-    <color name="LAWNGREEN">#7CFC00</color>
-    <color name="LEMONCHIFFON">#FFFACD</color>
-    <color name="LIGHTBLUE">#ADD8E6</color>
-    <color name="LIGHTCORAL">#F08080</color>
-    <color name="LIGHTCYAN">#E0FFFF</color>
-    <color name="LIGHTGOLDENRODYELLOW">#FAFAD2</color>
-    <color name="LIGHTGRAY">#D3D3D3</color>
-    <color name="LIGHTGREEN">#90EE90</color>
-    <color name="LIGHTPINK">#FFB6C1</color>
-    <color name="LIGHTSALMON">#FFA07A</color>
-    <color name="LIGHTSEAGREEN">#20B2AA</color>
-    <color name="LIGHTSKYBLUE">#87CEFA</color>
-    <color name="LIGHTSLATEGRAY">#778899</color>
-    <color name="LIGHTSTEELBLUE">#B0C4DE</color>
-    <color name="LIGHTYELLOW">#FFFFE0</color>
-    <color name="LIME">#00FF00</color>
-    <color name="LIMEGREEN">#32CD32</color>
-    <color name="LINEN">#FAF0E6</color>
-    <color name="MAGENTA">#FF00FF</color>
-    <color name="MAROON">#800000</color>
-    <color name="MEDIUMAQUAMARINE">#66CDAA</color>
-    <color name="MEDIUMBLUE">#0000CD</color>
-    <color name="MEDIUMORCHID">#BA55D3</color>
-    <color name="MEDIUMPURPLE">#9370DB</color>
-    <color name="MEDIUMSEAGREEN">#3CB371</color>
-    <color name="MEDIUMSLATEBLUE">#7B68EE</color>
-    <color name="MEDIUMSPRINGGREEN">#00FA9A</color>
-    <color name="MEDIUMTURQUOISE">#48D1CC</color>
-    <color name="MEDIUMVIOLETRED">#C71585</color>
-    <color name="MIDNIGHTBLUE">#191970</color>
-    <color name="MINTCREAM">#F5FFFA</color>
-    <color name="MISTYROSE">#FFE4E1</color>
-    <color name="MOCCASIN">#FFE4B5</color>
-    <color name="NAVAJOWHITE">#FFDEAD</color>
-    <color name="NAVY">#000080</color>
-    <color name="OLDLACE">#FDF5E6</color>
-    <color name="OLIVE">#808000</color>
-    <color name="OLIVEDRAB">#6B8E23</color>
-    <color name="ORANGE">#FFA500</color>
-    <color name="ORANGERED">#FF4500</color>
-    <color name="ORCHID">#DA70D6</color>
-    <color name="PALEGOLDENROD">#EEE8AA</color>
-    <color name="PALEGREEN">#98FB98</color>
-    <color name="PALETURQUOISE">#AFEEEE</color>
-    <color name="PALEVIOLETRED">#DB7093</color>
-    <color name="PAPAYAWHIP">#FFEFD5</color>
-    <color name="PEACHPUFF">#FFDAB9</color>
-    <color name="PERU">#CD853F</color>
-    <color name="PINK">#FFC0CB</color>
-    <color name="PLUM">#DDA0DD</color>
-    <color name="POWDERBLUE">#B0E0E6</color>
-    <color name="PURPLE">#800080</color>
-    <color name="REBECCAPURPLE">#663399</color>
-    <color name="RED">#FF0000</color>
-    <color name="ROSYBROWN">#BC8F8F</color>
-    <color name="ROYALBLUE">#4169E1</color>
-    <color name="SADDLEBROWN">#8B4513</color>
-    <color name="SALMON">#FA8072</color>
-    <color name="SANDYBROWN">#F4A460</color>
-    <color name="SEAGREEN">#2E8B57</color>
-    <color name="SEASHELL">#FFF5EE</color>
-    <color name="SIENNA">#A0522D</color>
-    <color name="SILVER">#C0C0C0</color>
-    <color name="SKYBLUE">#87CEEB</color>
-    <color name="SLATEBLUE">#6A5ACD</color>
-    <color name="SLATEGRAY">#708090</color>
-    <color name="SNOW">#FFFAFA</color>
-    <color name="SPRINGGREEN">#00FF7F</color>
-    <color name="STEELBLUE">#4682B4</color>
-    <color name="TAN">#D2B48C</color>
-    <color name="TEAL">#008080</color>
-    <color name="THISTLE">#D8BFD8</color>
-    <color name="TOMATO">#FF6347</color>
-    <color name="TURQUOISE">#40E0D0</color>
-    <color name="VIOLET">#EE82EE</color>
-    <color name="WHEAT">#F5DEB3</color>
-    <color name="WHITE">#FFFFFF</color>
-    <color name="WHITESMOKE">#F5F5F5</color>
-    <color name="YELLOW">#FFFF00</color>
-    <color name="YELLOWGREEN">#9ACD32</color>
-</resources>
-```
-
+[Download colors.xml Here](https://drive.google.com/uc?export=download&id=1ci5otM9UZwphZ-4EZfgiO4p9Wmmo5x6G)
     
 ## Google Speech API
 
@@ -1231,9 +822,9 @@ Now let's go into the `activity_main.xml` and change the icon of the Floating Ac
 ![Layout](sc.png)
 
 
-Now eventhough we have uses-permission in our manifest, we should request audio on runtime. Let's add this to our `onCreate()` method.
+Now even though we have uses-permission in our manifest, we should request audio on runtime. Let's add this to our `onCreate()` method.
         
-```
+```Java
 if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
 	ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, RECORD_REQUEST_CODE);
 }
@@ -1245,7 +836,7 @@ Putting our request code as a constant at the top of our class.
 
 Now we're going to set up our voice recorder.
 
-```
+```Java
 private final VoiceRecorder.Callback mVoiceCallback = new VoiceRecorder.Callback() {
 
         @Override
@@ -1273,7 +864,7 @@ private final VoiceRecorder.Callback mVoiceCallback = new VoiceRecorder.Callback
 ```
 
 Next, let's set up our SpeechAPI.
-
+```Java
     private final SpeechAPI.Listener mSpeechServiceListener =
             new SpeechAPI.Listener() {
                 @Override
@@ -1284,9 +875,19 @@ Next, let's set up our SpeechAPI.
                     }
                 }
             };
+```
+Be sure to add fields for our SpeechAPI and VoiceRecorder objects:
+```Java
+SpeechAPI speechAPI = new SpeechAPI(this);
+```
+and
+```Java
+VoiceRecorder mVoiceRecorder = new VoiceRecorder(mVoiceCallback);
+```
 
 We need to process the text. So let's create that processText function.
-
+Since each color in the colors.xml is all-caps and only letters, then we capitalize and remove all whitespace from the string. 
+```java
     private void processText(final String text) {
         runOnUiThread(new Runnable() {
             @Override
@@ -1296,10 +897,10 @@ We need to process the text. So let's create that processText function.
             }
         });
     }
+```    
     
-    
-Now we need to get the color by name from our colors.xml resource file.
-
+Now we need to get the color by name from our colors.xml resource file. We use reflection to accomplish this, by accessing a field by its name as a string. 
+```java
     public int getColorByName(String name) {
         int colorId = 0;
         try {
@@ -1311,9 +912,9 @@ Now we need to get the color by name from our colors.xml resource file.
         }
         return colorId;
     }
-    
+```    
 Now let's override on stop.
-
+```java
     @Override
     protected void onStop() {
         stopVoiceRecorder();
@@ -1325,11 +926,11 @@ Now let's override on stop.
 
         super.onStop();
     }
-    
+```    
     
 We'll have these functions `startVoiceRecorder()` and `stopVoiceRecorder()`.
 
-    
+```java    
         private void startVoiceRecorder() {
         if (mVoiceRecorder != null) {
             mVoiceRecorder.stop();
@@ -1344,7 +945,7 @@ We'll have these functions `startVoiceRecorder()` and `stopVoiceRecorder()`.
             mVoiceRecorder = null;
         }
     }
-    
+```    
 
 It's finally time to put all these together. We're going to call these functions when our floating action button is pressed, and then stop when it's pressed again.
 
