@@ -825,7 +825,7 @@ the properties view of the Floating Action Button and change it to `ic_btn_speak
 ![Layout](sc.png)
 
 
-Now even though we have user-permission in our manifest, we should request audio on runtime. Let's add this to our `onCreate()` method.
+Now even though we have uses-permission in our manifest, we should request audio on runtime. Let's add this to our `onCreate()` method.
         
 ```Java
 if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
