@@ -10,22 +10,24 @@ environments:      android
 
 ## Overview of Tutorial
 
-We're going to make an app called "Colorwaves". It well let you control the color of your screen purely from your voice.
+We're going to make an app called "Colorwaves". It will let you control the color of your screen purely from your voice.
 
 Prerequisites:
 
 * Android Studio 3.2
 * Android physical or virtual devices API 27
-* Google Cloud
+* Google Cloud Account
 
 
 ## Starter Code
 
 If you do not have the starter code android files, please follow the steps to make the base application. If you have the code, import it as a project in Android Studio and feel free to move to the next section.
 
-1. Make a new project called Colorwaves
-2. Select Basic Activity
-3. Make a class called **GoogleCredentialsInterceptor** using the code below:
+**Step 1:** Make a new project called Colorwaves
+
+**Step 2:** Select Basic Activity
+
+**Step 3:** Make a class called **GoogleCredentialsInterceptor** using the code below:
 
 
 ```java
@@ -46,10 +48,6 @@ import io.grpc.Metadata;
 import io.grpc.MethodDescriptor;
 import io.grpc.Status;
 import io.grpc.StatusException;
-
-/**
- * Created by brijesh on 22/7/17.
- */
 
 public class GoogleCredentialsInterceptor implements ClientInterceptor {
 
@@ -154,7 +152,8 @@ public class GoogleCredentialsInterceptor implements ClientInterceptor {
 }
 ```
 
-4. Make a class called **VoiceRecorder**
+**Step 4:** Make a class called **VoiceRecorder**. The code can be found below.
+
 
 ```java
 /*
@@ -172,8 +171,6 @@ public class GoogleCredentialsInterceptor implements ClientInterceptor {
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
-package com.app.androidkt.speechapi;
 
 import android.media.AudioFormat;
 import android.media.AudioRecord;
@@ -387,7 +384,7 @@ public class VoiceRecorder {
 }
 ```
 
-5. Make a class called **SpeechAPI**. The code can be found below.
+**Step 5:** Make a class called **SpeechAPI**. The code can be found below.
 
 ```java
 import android.content.Context;
@@ -643,7 +640,8 @@ public class SpeechAPI {
 }
 ```
 
-6. Update the Project Gradle
+**Step 6:** Update the Project Gradle using the code below:
+
 ```javascript
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
@@ -680,7 +678,7 @@ task clean(type: Delete) {
 ```
 
 
-7. Update the App Gradle
+**Step 7:** Update the App Gradle using the code below:
 
 ```javascript
 apply plugin: 'com.android.application'
@@ -775,13 +773,14 @@ dependencies {
 
 ```
 
-8. Add audio and internet permissions to the manifest
+**Step 8:**Add audio and internet permissions to the manifest
+
 ```xml
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
 ``` 
 
-9. Add colors.xml
+**Step 9:** Replace the colors.xml file.
 [Download colors.xml Here](https://drive.google.com/uc?export=download&id=1ci5otM9UZwphZ-4EZfgiO4p9Wmmo5x6G)
     
 ## Google Speech API
@@ -793,7 +792,7 @@ Go to the Google Cloud Platform [console](https://console.cloud.google.com).
 1. Create a new Project
 ![Create](cproj.png)
 
-2. Enable API
+2. Enable APIs and Servies
 ![Enable](cenable.png)
 
 3. Add Cloud Speech API
@@ -802,11 +801,11 @@ Go to the Google Cloud Platform [console](https://console.cloud.google.com).
 4. Create credentials
 ![Credentials](ccred.png)
 
-5. Assign role
+5. Assign the "Owner" role to the service
 ![Role](crole.png)
 
-Once you have done this it will generate and download a JSON file. Rename this file to credentials.json and then create 
-a new directory in your project res file called raw and add the json file there.
+Once you have done this it will generate and download a JSON file. Rename this file to `credentials.json` and then create 
+a new directory in your project res directory called raw and add the json file there. Please note that in an actual application, you should never store credentials.json locally, but rather store the file in your server and obtain an access token from there.
 
 ![Raw](rawfile.png)
 
@@ -820,7 +819,7 @@ In the `content_main.xml`, let's give the constraint layout a name, so we can re
 of the "Hello World" text.
 
 Now let's go into the `activity_main.xml` and change the icon of the Floating Action Button to a mic. Find srcCompat in 
-the properties view and change it to `ic_btn_speak_now`. Let's change the backgroundTint of the FAB to red, and the tint to WHITE.
+the properties view of the Floating Action Button and change it to `ic_btn_speak_now`. Let's also change the backgroundTint of the button to RED, and the tint to WHITE.
 
 
 ![Layout](sc.png)
@@ -838,7 +837,7 @@ Putting our request code as a constant at the top of our class.
 `private static final int RECORD_REQUEST_CODE = 101;`
 
 
-Next we're going to set up our VoiceRecorder: 
+Next we're going to set up our VoiceRecorder, which continuously records audio and notifies the link in the callback. We can send this audio to the Google Cloud Speech API using the code below. This should be added in our MainActivity class.
 
 ```Java
 private final VoiceRecorder.Callback mVoiceCallback = new VoiceRecorder.Callback() {
@@ -867,8 +866,9 @@ private final VoiceRecorder.Callback mVoiceCallback = new VoiceRecorder.Callback
     };
 ```
 
-Next, let's set up our SpeechAPI:
-```Java
+Still in our MainActivity class, let's set up our SpeechAPI by adding a listener that will wait for speech to be recognized.
+
+```java
     private final SpeechAPI.Listener mSpeechServiceListener =
             new SpeechAPI.Listener() {
                 @Override
@@ -882,16 +882,20 @@ Next, let's set up our SpeechAPI:
 ```
 
 Be sure to add fields for our SpeechAPI and VoiceRecorder objects:
-```Java
+
+```java
 SpeechAPI speechAPI = new SpeechAPI(this);
 ```
 and
-```Java
+
+```java
 VoiceRecorder mVoiceRecorder = new VoiceRecorder(mVoiceCallback);
 ```
 
-We need to process the text. So let's create that processText function that is called when you set up `speechAPI`.
-Since each color in the colors.xml is all-caps and only letters, then we capitalize and remove all whitespace from the string. 
+You might have noticed the error under the `processText()` function, since it currently doesn't exist! We need to process the text and then set the background to a color if it exists. So let's create that `processText()` function.
+
+Since each color in the `colors.xml` file is all-caps and only letters, we want to capitalize the letters and remove all whitespace from the string we obtained through the voice recognition so that we can compare them. 
+
 ```java
     private void processText(final String text) {
         runOnUiThread(new Runnable() {
@@ -905,6 +909,7 @@ Since each color in the colors.xml is all-caps and only letters, then we capital
 ```    
     
 Now we need to get the color by name from our colors.xml resource file. We use reflection to accomplish this, by accessing a field by its name as a string. 
+
 ```java
     public int getColorByName(String name) {
         int colorId = 0;
@@ -918,7 +923,8 @@ Now we need to get the color by name from our colors.xml resource file. We use r
         return colorId;
     }
 ```    
-Now let's override on stop.
+Now let's override `onStop()` to stop our speech recognition and voice recorder when we exit the app.
+
 ```java
     @Override
     protected void onStop() {
@@ -933,10 +939,10 @@ Now let's override on stop.
     }
 ```    
     
-We'll have these functions `startVoiceRecorder()` and `stopVoiceRecorder()`.
+We'll need to have the functions `startVoiceRecorder()` and `stopVoiceRecorder()`.
 
 ```java    
-        private void startVoiceRecorder() {
+    private void startVoiceRecorder() {
         if (mVoiceRecorder != null) {
             mVoiceRecorder.stop();
         }
@@ -952,11 +958,11 @@ We'll have these functions `startVoiceRecorder()` and `stopVoiceRecorder()`.
     }
 ```    
 
-It's finally time to put all these together. We're going to call these functions when our floating action button is pressed, and then stop when it's pressed again.
+It's finally time to put all these together. We're going to call `startVoiceRecorder()` when our floating action button is pressed, and then `stopVoiceRecorder()` when it's pressed again just so the user can stop changing the color.
 
 Let's create a public variable `boolean flag = true;` so we know if the button has been pressed our not.
 
-Now we can get rid of the auto-generated snackbar in our FAB listener code and instead have:
+Now we can get rid of the auto-generated snackbar in our FAB listener code and instead put:
 
 ```java
             public void onClick(View view) {
@@ -983,4 +989,6 @@ Now we're ready to run it! When we click the floating action button, it should t
 In this tutorial we created the Colorwaves app that uses Google Cloud Speech API to change the color of our background to whatever color the user has spoken.
 
 To learn more about the Google Speech API, please visit this [page](https://cloud.google.com/speech-to-text/).
+
+Part of the code from this tutorial was obtained from sample applications in the Google cloud [documentation](https://cloud.google.com/speech-to-text/docs/samples).
 
