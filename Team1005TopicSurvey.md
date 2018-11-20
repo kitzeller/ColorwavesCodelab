@@ -773,14 +773,14 @@ dependencies {
 
 ```
 
-**Step 8:**Add audio and internet permissions to the manifest
+**Step 8:** Add audio and internet permissions to the manifest
 
 ```xml
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
 ``` 
 
-**Step 9:** Replace the colors.xml file.
+**Step 9:** Replace the colors.xml file. These are going to be the colors we can recognize!
 [Download colors.xml Here](https://drive.google.com/uc?export=download&id=1ci5otM9UZwphZ-4EZfgiO4p9Wmmo5x6G)
     
 ## Google Speech API
@@ -982,6 +982,8 @@ Now we can get rid of the auto-generated snackbar in our FAB listener code and i
 
 
 Now we're ready to run it! When we click the floating action button, it should turn green and we can speak the colors.
+
+We can only recognize the colors in the `color.xml` file. Feel free to make your own creative color names and add them to the xml file with hex values for some more fun!
 
 ![Layout](bp.png)
 
